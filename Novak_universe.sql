@@ -48,20 +48,121 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.constellation (
+    constellation_id integer NOT NULL,
+    constellation_name character varying(20) NOT NULL,
+    visibility_month character varying(20) NOT NULL,
+    grecoroman_ancient_origin boolean NOT NULL,
+    attributed_to text NOT NULL
 );
 
 
 ALTER TABLE public.constellation OWNER TO freecodecamp;
 
 --
+-- Name: constellation_constellation_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+--
+
+CREATE SEQUENCE public.constellation_constellation_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.constellation_constellation_id_seq OWNER TO freecodecamp;
+
+--
+-- Name: constellation_constellation_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+--
+
+ALTER SEQUENCE public.constellation_constellation_id_seq OWNED BY public.constellation.constellation_id;
+
+
+--
 -- Name: galaxy; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
 CREATE TABLE public.galaxy (
+    galaxy_id integer NOT NULL,
+    galaxy_name character varying(20) NOT NULL,
+    galaxy_type character varying(20) NOT NULL,
+    constellation_id integer NOT NULL,
+    galaxy_earth_distance_ly integer NOT NULL,
+    blackholes boolean NOT NULL,
+    active_blackhole boolean NOT NULL,
+    blackhole_mass_suns integer
 );
 
 
 ALTER TABLE public.galaxy OWNER TO freecodecamp;
+
+--
+-- Name: galaxy_constellation_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+--
+
+CREATE SEQUENCE public.galaxy_constellation_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.galaxy_constellation_id_seq OWNER TO freecodecamp;
+
+--
+-- Name: galaxy_constellation_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+--
+
+ALTER SEQUENCE public.galaxy_constellation_id_seq OWNED BY public.galaxy.constellation_id;
+
+
+--
+-- Name: galaxy_galaxy_earth_distance_ly_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+--
+
+CREATE SEQUENCE public.galaxy_galaxy_earth_distance_ly_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.galaxy_galaxy_earth_distance_ly_seq OWNER TO freecodecamp;
+
+--
+-- Name: galaxy_galaxy_earth_distance_ly_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+--
+
+ALTER SEQUENCE public.galaxy_galaxy_earth_distance_ly_seq OWNED BY public.galaxy.galaxy_earth_distance_ly;
+
+
+--
+-- Name: galaxy_galaxy_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+--
+
+CREATE SEQUENCE public.galaxy_galaxy_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.galaxy_galaxy_id_seq OWNER TO freecodecamp;
+
+--
+-- Name: galaxy_galaxy_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+--
+
+ALTER SEQUENCE public.galaxy_galaxy_id_seq OWNED BY public.galaxy.galaxy_id;
+
 
 --
 -- Name: moon; Type: TABLE; Schema: public; Owner: freecodecamp
@@ -94,6 +195,34 @@ CREATE TABLE public.star (
 ALTER TABLE public.star OWNER TO freecodecamp;
 
 --
+-- Name: constellation constellation_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.constellation ALTER COLUMN constellation_id SET DEFAULT nextval('public.constellation_constellation_id_seq'::regclass);
+
+
+--
+-- Name: galaxy galaxy_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.galaxy ALTER COLUMN galaxy_id SET DEFAULT nextval('public.galaxy_galaxy_id_seq'::regclass);
+
+
+--
+-- Name: galaxy constellation_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.galaxy ALTER COLUMN constellation_id SET DEFAULT nextval('public.galaxy_constellation_id_seq'::regclass);
+
+
+--
+-- Name: galaxy galaxy_earth_distance_ly; Type: DEFAULT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.galaxy ALTER COLUMN galaxy_earth_distance_ly SET DEFAULT nextval('public.galaxy_galaxy_earth_distance_ly_seq'::regclass);
+
+
+--
 -- Data for Name: constellation; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
@@ -124,6 +253,36 @@ ALTER TABLE public.star OWNER TO freecodecamp;
 
 
 --
+-- Name: constellation_constellation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.constellation_constellation_id_seq', 1, false);
+
+
+--
+-- Name: galaxy_constellation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.galaxy_constellation_id_seq', 1, false);
+
+
+--
+-- Name: galaxy_galaxy_earth_distance_ly_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.galaxy_galaxy_earth_distance_ly_seq', 1, false);
+
+
+--
+-- Name: galaxy_galaxy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 1, false);
+
+
+--
 -- PostgreSQL database dump complete
 --
+
+
 
