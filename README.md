@@ -21,4 +21,4 @@ Populated the database with realistic data from various online sources about cel
 * [IAU] (https://www.iau.org/public/themes/constellations/#n2)
 * [Messier Objects] (https://www.messier-objects.com/messier-object-list/)
 * [ESA Hubble] (https://esahubble.org/)
-* [Go Atronomy] (https://www.go-astronomy.com/black-holes.php)
+* [Go Astronomy] (https://www.go-astronomy.com/black-holes.php)
