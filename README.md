@@ -19,6 +19,3 @@ Populated the database with realistic data from various online sources about cel
 * [BBC Sky At Nigh Magazine] (https://www.skyatnightmagazine.com/astrophotography/stars/star-clusters/)
 * [Britannica] (https://www.britannica.com/topic/list-of-moons-2033266)
 * [IAU] (https://www.iau.org/public/themes/constellations/#n2)
-
-
-Updated README with project details
